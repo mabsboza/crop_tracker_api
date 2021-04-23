@@ -24,7 +24,7 @@ pool.connect((err, client, release) => {
   
 app.get('/testdata', (req, res, next) => {
   console.log("TEST DATA :");
-  pool.query('Select * from test')
+  pool.query('Select * from users')
     .then(testData => {
       console.log(testData);
       res.send(testData.rows);
