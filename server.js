@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors')
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
@@ -10,4 +10,4 @@ res.send('Express application working ...');
 });
 // Start server
 app.listen(8080, () => console.log('server running ...'))
-module.exports = app;
+export default app;

@@ -1,7 +1,8 @@
-require('dotenv').config();
-const pgtools = require('pgtools');
-const pool = require('./db/dbConnection');
+import dotenv from 'dotenv';
+import  pgtools from "pgtools";
+import  pool  from './db/dbConnection.js';
 
+dotenv.config();
 /**
  * Create Database
  */
@@ -15,14 +16,14 @@ const config = {
   user: process.env.DB_USERNAME,
   port: process.env.DB_PORT,
   host: process.env.DB_HOST
-}
+};
 
-pgtools.createdb(config, 'test', function (err, res) {
+pgtools.createdb(config, "test", function(err, res) {
   if (err) {
-    console.error('Error, Database was not created');
+    console.error("Error, Database was not created");
     process.exit(-1);
   }
-  console.log('Database created!');
+  console.log("Database created!");
   setUpEnvironment();
 });
 
@@ -35,13 +36,14 @@ const createUserTable = () => {
   password VARCHAR(100) NOT NULL,
   role VARCHAR(50) COLLATE pg_catalog."default",
   created_at DATE NOT NULL,
-  updated_at DATE NOT NULL)`
+  updated_at DATE NOT NULL)`;
 
-  pool.query(userCreateQuery)
-    .then((res) => {
-      console.log('Table has been created');
+  pool
+    .query(userCreateQuery)
+    .then(res => {
+      console.log("Table has been created");
     })
-    .catch((err) => {
-      console.log('Error, Table was not created!');
+    .catch(err => {
+      console.log("Error, Table was not created!");
     });
 };
