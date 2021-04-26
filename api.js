@@ -29,9 +29,3 @@ app.get('/testdata', (req, res, next) => {
       res.send(testData.rows);
     })
 })
-
-// // Create a Server and run it on the port 3000
-// const server = app.listen(3000, function () {
-//   let host = server.address().address
-//   let port = server.address().port
-// })
