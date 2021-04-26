@@ -9,7 +9,8 @@
 
 ## Development env setup
 
-- run: `npm install`
+- Run: `npm install`
+- Set up env variables
 - To create local database env run: `npm setup`
 
 ## Development
