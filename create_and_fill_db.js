@@ -34,9 +34,9 @@ const createUserTable = () => {
   first_name VARCHAR(100), 
   last_name VARCHAR(100), 
   password VARCHAR(100) NOT NULL,
-  role VARCHAR(50) COLLATE pg_catalog."default",
   created_at DATE NOT NULL,
   updated_at DATE NOT NULL)`;
+  
 
   pool
     .query(userCreateQuery)
