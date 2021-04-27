@@ -12,13 +12,8 @@ const setUpEnvironment = () => {
   //Create Role table
 };
 
-const config = {
-  user: process.env.DB_USERNAME,
-  port: process.env.DB_PORT,
-  host: process.env.DB_HOST
-};
 
-pgtools.createdb(config, "test", function(err, res) {
+pgtools.createdb(process.env.DATABASE_URL, process.env.DB_DATABASE, function(err, res) {
   if (err) {
     console.error("Error, Database was not created");
     process.exit(-1);
