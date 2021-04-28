@@ -6,6 +6,7 @@
 - Express 
 - JWT 
 - Postgres
+- Heroku
 
 ## Development env setup
 
@@ -16,3 +17,25 @@
 ## Development
 
 - To run server: `npm start`
+
+
+## API
+
+- Deployed in Heroku, check if server is online `http://crop-tracker-api.herokuapp.com/`
+- Signup `/api/v1/auth/signup`
+
+  {
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "password": ""
+  }
+
+- Signin `/api/v1/auth/signin`
+
+   Token in `HEADER`
+   
+  {
+    "email": "",
+    "password": ""
+  }
