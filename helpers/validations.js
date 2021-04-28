@@ -1,3 +1,26 @@
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
+/**
+   * Hash Password Method
+   * @param {string} password
+   * @returns {string} returns hashed password
+   */
+  const saltRounds = 10;
+  const salt = bcrypt.genSaltSync(saltRounds);
+  const hashPassword = password => bcrypt.hashSync(password, salt);
+  
+  /**
+     * comparePassword
+     * @param {string} hashPassword
+     * @param {string} password
+     * @returns {Boolean} return True or False
+     */
+  const comparePassword = (hashedPassword, password) => {
+    return bcrypt.compareSync(password, hashedPassword);
+  };
 /**
    * isValidEmail helper method
    * @param {string} email
@@ -43,9 +66,28 @@ const empty = (input) => {
   }
 };
 
+/**
+   * Generate Token
+   * @param {string} id
+   * @returns {string} token
+   */
+  const generateUserToken = (email, id, first_name, last_name) => {
+    const token = jwt.sign({
+      email,
+      id,
+      first_name,
+      last_name,
+    },
+    process.env.SECRET, { expiresIn: '3d' });
+    return token;
+  };
+
 export {
+  hashPassword,
+  comparePassword,
   isValidEmail,
   validatePassword,
   isEmpty,
-  empty
+  empty,
+  generateUserToken
 };

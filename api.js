@@ -2,6 +2,7 @@
 import pool from './db/dbConnection.js';
 import app from './server.js';
 import bodyParser from 'body-parser';
+import usersRoute from './routes/userRoute.js';
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,12 +21,9 @@ pool.connect((err, client, release) => {
       console.log("Connected to Database !")
   })
 })
-  
-app.get('/testdata', (req, res, next) => {
-  console.log("TEST DATA :");
-  pool.query('Select * from users')
-    .then(testData => {
-      console.log(testData);
-      res.send(testData.rows);
-    })
-})
+
+app.get('/', function (req, res) {
+  res.send('Express application working ...');
+});
+
+app.use('/api/v1', usersRoute);
