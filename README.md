@@ -20,7 +20,7 @@
 
 
 ## API
-
+- Use an Api tool like `Postman`
 - Deployed in Heroku, check if server is online `http://crop-tracker-api.herokuapp.com/`
 - Signup `/api/v1/auth/signup`
 
